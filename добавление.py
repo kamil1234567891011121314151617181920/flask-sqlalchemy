@@ -6,7 +6,7 @@ from random import choice, randint
 
 def add_jobs():
     users_id = list(map(lambda x: x.id, db_sess.query(User)))
-    for i in range(16, 19):
+    for i in range(22, 25):
         job = Jobs()
         job.team_leader = choice(users_id)
         job.job = f"test_work{i}"
@@ -29,13 +29,19 @@ def add_users():
                ('Bean', 'Sean', 23, 'member', 'doctor',
                 'module_6', 'bin1sean1@mars.org'),
                ('Kapoor', 'Venkat', 19, 'member', 'doctor',
-                'module_1', 'venkat@mars.org')]:
-        user = db_sess.query(User).filter(User.surname == el[0])
-        if not list(user):  # если ещё не добавили
-            user = User()
-            user.surname, user.name, user.age, user.position, \
-                user.speciality, user.address, user.email = el
-            db_sess.add(user)
+                'module_1', 'venkat@mars.org'),
+               ('test1', 'test1', 17, 'member', 'test',
+                'module_4', 'test1@mars.org'),
+               ('test2', 'test2', 18, 'member', 'test',
+                'module_2', 'test2@mars.org')]:
+        # print(list(db_sess.query(User).filter(User.email == el[-1])))
+        if db_sess.query(User).filter(User.email == el[-1]).first():
+            continue  # если уже добавили
+        print(el[-1])
+        user = User()
+        user.surname, user.name, user.age, user.position, \
+            user.speciality, user.address, user.email = el
+        db_sess.add(user)
 
 
 if __name__ == '__main__':
