@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="p-4 row bg-light">
+    <div class="col-8"><h2>Миссия Колонизация Марса</h2></div>
+    <div class="col-4 col justify-content-end">
+        <h5 class="text-right">Mars One</h5>
+    </div>
+</div>
+<h4 style="color: LightGrey; padding-left: 20px;">
+    И на Марсе будут яблони цвести!</h4>
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
